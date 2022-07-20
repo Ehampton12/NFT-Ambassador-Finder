@@ -1,6 +1,6 @@
 import Moralis from "moralis";
 import React, { useEffect, useState } from "react";
-import DateFormater from "../../helper/dateFormatter";
+import DateFormater from "../../helper/dateFormater";
 
 export const NftHistoryTable = ({ nftAddress }) => {
   // history state

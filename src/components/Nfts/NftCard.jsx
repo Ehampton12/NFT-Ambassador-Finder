@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DateFormater from "../../helper/dateFormatter";
+import DateFormater from "../../helper/dateFormater";
 import NftDescriptionModal from "./NftDescriptionModal";
 
 export const NftCard = ({ data }) => {

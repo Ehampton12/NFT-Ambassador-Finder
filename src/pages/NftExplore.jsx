@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Moralis from "moralis";
 import { NftSearchBar } from "../components/Nfts/NftSearchBar";
 import { NftCardContainer } from "../components/Nfts/NftCardContainer";
+import { NftChainRadio } from "../components/Nfts/NftChainRadio";
+import { ThemeSwitch } from "../components/ThemeSwitch";
 
 export const NftExplore = ({ settheme }) => {
   // 1. loading state
@@ -19,6 +21,10 @@ export const NftExplore = ({ settheme }) => {
   // 5. The search query handler
   const handleChange = (e) => {
     setSearchQuery(e.target.value);
+  };
+
+  const handleSelectedChain = (e) => {
+    setchain(e.target.value);
   };
 
   // 6. The search function
@@ -76,6 +82,10 @@ export const NftExplore = ({ settheme }) => {
         searchNFTs={searchNFTs}
         handleChange={handleChange}
       />
+      <ThemeSwitch settheme={settheme} />
+
+      <NftChainRadio handleSelectedChain={handleSelectedChain} />
+      <NftCardContainer searchResult={searchResult} loading={loading} />
       <NftCardContainer searchResult={searchResult} loading={loading} />
     </React.Fragment>
   );
