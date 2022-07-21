@@ -6,19 +6,19 @@ import { NftChainRadio } from "../components/Nfts/NftChainRadio";
 import { ThemeSwitch } from "../components/ThemeSwitch";
 
 export const NftExplore = ({ settheme }) => {
-  // 1. loading state
+  //  loading state
   const [loading, setLoading] = useState(false);
 
-  // 2. The search query state
+  //  The search query state
   const [searchQuery, setSearchQuery] = useState("");
 
-  // 3. The chain state
+  //  The chain state
   const [chain, setchain] = useState("eth");
 
-  // 4. The search results state
+  //  The search results state
   const [searchResult, setSearchResult] = useState(null);
 
-  // 5. The search query handler
+  //  The search query handler
   const handleChange = (e) => {
     setSearchQuery(e.target.value);
   };
@@ -27,13 +27,13 @@ export const NftExplore = ({ settheme }) => {
     setchain(e.target.value);
   };
 
-  // 6. The search function
+  //  The search function
   const searchNFTs = async () => {
     try {
-      // 6.1. Set the loading state to true
+      //  Set the loading state to true
       setLoading(true);
 
-      // 6.2. Search for the NFTs
+      //  Search for the NFTs
       const options = {
         q: searchQuery || "bored",
         chain: chain,
@@ -41,33 +41,33 @@ export const NftExplore = ({ settheme }) => {
         limit: "30",
       };
 
-      // 6.3. Get the search results
+      //  Get the search results
       const NFTs = await Moralis.Web3API.token.searchNFTs(options);
 
-      // 6.4. If there is a result
+      // If there is a result
       if (NFTs.result) {
-        // 6.4.1. Convert the result metadata to an array
+        //  Convert the result metadata to an array
         const convertMetadata = NFTs.result.map((nft) => {
           nft.metadata = JSON.parse(nft.metadata);
           return nft;
         });
 
-        // 6.4.2. Set the search result state
+        //  Set the search result state
         setSearchResult(convertMetadata);
 
-        // 6.4.3. Set the loading state to false
+        //  Set the loading state to false
         setLoading(false);
       }
     } catch (error) {
-      // 6.4.4. If there is an error, alert the user
+      //    If there is an error, alert the user
       alert(error);
 
-      // 6.4.5. Set the loading state to false
+      //  Set the loading state to false
       setLoading(false);
     }
   };
 
-  // 7. Search for "bored" NFTs on mount
+  //  Search for "bored" NFTs on mount
   useEffect(() => {
     searchNFTs();
   }, []);

@@ -30,6 +30,7 @@ export const NftCard = ({ data }) => {
           className="p-8 h-64 w-full"
           src={image_url_png || image}
           alt={name}
+          target="_blank"
         />
         <div className="px-5 pb-5">
           <h5 className="text-xl capitalize h-16 font-semibold tracking-tight text-gray-900 dark:text-white">
